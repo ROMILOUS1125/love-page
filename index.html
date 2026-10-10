@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>超超，我爱你</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{
-            width:100vw;
-            height:100vh;
-            overflow:hidden;
-            background:#ffe6ee;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-        .msg{
-            font-size:52px;
-            color:#d62858;
-            font-weight:bold;
-            text-align:center;
-            animation:fadeIn 2s;
-        }
-        @keyframes fadeIn{
-            from{opacity:0; transform:scale(0.8)}
-            to{opacity:1; transform:scale(1)}
-        }
-        .heart{
-            position:absolute;
-            color:#ff6b81;
-            animation:fall linear;
-            pointer-events:none;
-        }
-        @keyframes fall{
-            0%{transform:translateY(-30px);opacity:1}
-            100%{transform:translateY(100vh);opacity:0}
-        }
-        .clickHeart{
-            position:absolute;
-            color:#ff4777;
-            animation:pop 0.8s ease-out forwards;
-            pointer-events:none;
-        }
-        @keyframes pop{
-            0%{transform:scale(0);opacity:1;}
-            100%{transform:scale(2) translateY(-80px);opacity:0;}
-      
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>致超超</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  width:100vw;height:100vh;
+  background:#ffd6e0;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#c84268;
+  font-family:system-ui;
+}
+.heart{
+  position:absolute;
+  color:#ff6b8b;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+@keyframes fall{
+  0%{transform:translateY(-10px) rotate(0deg);opacity:1;}
+  100%{transform:translateY(100vh) rotate(360deg);opacity:0;}
+}
+</style>
+</head>
+<body>
+<div>超超，我爱你</div>
+<script>
+//自动持续飘落爱心
+function createHeart(){
+  const h = document.createElement('div');
+  h.classList.add('heart');
+  h.innerText = '♥';
+  h.style.left = Math.random()*100+'vw';
+  h.style.fontSize = Math.random()*20+10+'px';
+  h.style.animationDuration = Math.random()*3+2+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+}
+setInterval(createHeart,200);
+
+//点击屏幕弹出爱心
+document.addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const h = document.createElement('div');
+    h.classList.add('heart');
+    h.innerText='♥';
+    h.style.left=e.clientX+'px';
+    h.style.top=e.clientY+'px';
+    h.style.fontSize=Math.random()*20+10+'px';
+    h.style.animationDuration=Math.random()*2+1+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),3000);
+  }
+})
+</script>
+</body>
+</html>
