@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>超超，我爱你</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            width:100vw;
+            height:100vh;
+            overflow:hidden;
+            background:#ffe6ee;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .msg{
+            font-size:52px;
+            color:#d62858;
+            font-weight:bold;
+            text-align:center;
+            animation:fadeIn 2s;
+        }
+        @keyframes fadeIn{
+            from{opacity:0; transform:scale(0.8)}
+            to{opacity:1; transform:scale(1)}
+        }
+        .heart{
+            position:absolute;
+            color:#ff6b81;
+            animation:fall linear;
+            pointer-events:none;
+        }
+        @keyframes fall{
+            0%{transform:translateY(-30px);opacity:1}
+            100%{transform:translateY(100vh);opacity:0}
+        }
+        .clickHeart{
+            position:absolute;
+            color:#ff4777;
+            animation:pop 0.8s ease-out forwards;
+            pointer-events:none;
+        }
+        @keyframes pop{
+            0%{transform:scale(0);opacity:1;}
+            100%{transform:scale(2) translateY(-80px);opacity:0;}
+      
